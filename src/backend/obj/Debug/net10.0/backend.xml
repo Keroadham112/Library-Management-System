@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>backend</name>
+    </assembly>
+    <members>
+        <member name="M:backend.Controllers.CategoriesController.GetAll(System.Threading.CancellationToken)">
+            <summary>
+            Gets all categories.
+            </summary>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>A list of categories ordered by name.</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriesController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Gets a category by its identifier.
+            </summary>
+            <param name="id">The category identifier.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>The matching category or 404 if it does not exist.</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriesController.Create(backend.Application.DTOs.CategoryUpsertDto,System.Threading.CancellationToken)">
+            <summary>
+            Creates a category.
+            </summary>
+            <param name="dto">The category data to create.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>The created category.</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriesController.Update(System.Int32,backend.Application.DTOs.CategoryUpsertDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing category.
+            </summary>
+            <param name="id">The category identifier.</param>
+            <param name="dto">The updated category data.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>404 if the category does not exist, otherwise 204 No Content.</returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriesController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a category.
+            </summary>
+            <param name="id">The category identifier.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>404 if the category does not exist, otherwise 204 No Content.</returns>
+        </member>
+        <member name="M:backend.Controllers.DashboardController.GetSummary(System.Threading.CancellationToken)">
+            <summary>
+            Gets the dashboard summary statistics.
+            </summary>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>Total products, categories, stock quantity, inventory value, and low stock count.</returns>
+        </member>
+        <member name="M:backend.Controllers.ProductsController.GetAll(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Gets products with optional name search and pagination.
+            </summary>
+            <param name="search">Optional product name filter.</param>
+            <param name="page">The page number, starting at 1.</param>
+            <param name="pageSize">The number of items per page.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>A paged list of products including the category name.</returns>
+        </member>
+        <member name="M:backend.Controllers.ProductsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Gets a product by its identifier.
+            </summary>
+            <param name="id">The product identifier.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>The matching product or 404 if it does not exist.</returns>
+        </member>
+        <member name="M:backend.Controllers.ProductsController.Create(backend.Application.DTOs.ProductUpsertDto,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new product.
+            </summary>
+            <param name="dto">The product data to create.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>The created product, or an error if validation fails.</returns>
+        </member>
+        <member name="M:backend.Controllers.ProductsController.Update(System.Int32,backend.Application.DTOs.ProductUpsertDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing product.
+            </summary>
+            <param name="id">The product identifier.</param>
+            <param name="dto">The updated product data.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>The updated product, or an error if the resource cannot be updated.</returns>
+        </member>
+        <member name="M:backend.Controllers.ProductsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a product.
+            </summary>
+            <param name="id">The product identifier.</param>
+            <param name="cancellationToken">Cancels the request if the client disconnects.</param>
+            <returns>404 if the product does not exist, otherwise 204 No Content.</returns>
+        </member>
+        <member name="T:backend.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddProducts">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddProducts.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddProducts.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddSales">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddSales.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddSales.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddSales.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddAuthUsers">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAuthUsers.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAuthUsers.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddAuthUsers.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+    </members>
+</doc>
