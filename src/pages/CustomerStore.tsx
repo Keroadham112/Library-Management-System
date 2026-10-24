@@ -8,6 +8,7 @@ import { createSale } from '../services/saleService'
 import type { Customer } from '../types/customer'
 import type { Product } from '../types/product'
 import type { SaleUpsertPayload } from '../types/sale'
+import { getStorefrontProductImage } from '../utils/storefront'
 
 type CartItem = {
   product: Product
@@ -116,40 +117,6 @@ const rowActionsStyle: CSSProperties = {
 
 function formatPrice(value: number) {
   return `${numberFormatter.format(value)} EGP`
-}
-
-function getProductImage(product: Product) {
-  const searchableText = `${product.name} ${product.categoryName}`.toLowerCase()
-
-  if (searchableText.includes('phone') || searchableText.includes('mobile')) {
-    return 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('laptop') || searchableText.includes('computer')) {
-    return 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('mouse') || searchableText.includes('keyboard')) {
-    return 'https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('headphone') || searchableText.includes('audio')) {
-    return 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('shirt') || searchableText.includes('clothes')) {
-    return 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('shoe') || searchableText.includes('fashion')) {
-    return 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80'
-  }
-
-  if (searchableText.includes('food') || searchableText.includes('grocery')) {
-    return 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80'
-  }
-
-  return 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'
 }
 
 function getErrorMessage(error: unknown, fallback: string) {
@@ -358,7 +325,7 @@ function CustomerStore() {
                     <img
                       alt={product.name}
                       loading="lazy"
-                      src={getProductImage(product)}
+                      src={getStorefrontProductImage(product)}
                       style={productImageStyle}
                     />
                     <div>
@@ -417,7 +384,7 @@ function CustomerStore() {
                   <img
                     alt={item.product.name}
                     loading="lazy"
-                    src={getProductImage(item.product)}
+                    src={getStorefrontProductImage(item.product)}
                     style={cartImageStyle}
                   />
                   <div>

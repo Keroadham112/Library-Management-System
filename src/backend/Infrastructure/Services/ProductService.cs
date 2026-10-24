@@ -38,6 +38,8 @@ public sealed class ProductService(AppDbContext dbContext) : IProductService
             {
                 Id = product.Id,
                 Name = product.Name,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
                 CategoryId = product.CategoryId,
                 CategoryName = product.Category.Name,
                 StockQuantity = product.StockQuantity,
@@ -70,6 +72,8 @@ public sealed class ProductService(AppDbContext dbContext) : IProductService
             {
                 Id = product.Id,
                 Name = product.Name,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
                 CategoryId = product.CategoryId,
                 CategoryName = product.Category.Name,
                 StockQuantity = product.StockQuantity,
@@ -101,6 +105,8 @@ public sealed class ProductService(AppDbContext dbContext) : IProductService
         var product = new Product
         {
             Name = dto.Name.Trim(),
+            Description = dto.Description?.Trim(),
+            ImageUrl = dto.ImageUrl?.Trim(),
             CategoryId = dto.CategoryId,
             StockQuantity = dto.StockQuantity,
             CostPrice = dto.CostPrice,
@@ -139,6 +145,12 @@ public sealed class ProductService(AppDbContext dbContext) : IProductService
         }
 
         product.Name = dto.Name.Trim();
+        product.Description = string.IsNullOrWhiteSpace(dto.Description)
+            ? product.Description
+            : dto.Description.Trim();
+        product.ImageUrl = string.IsNullOrWhiteSpace(dto.ImageUrl)
+            ? product.ImageUrl
+            : dto.ImageUrl.Trim();
         product.CategoryId = dto.CategoryId;
         product.StockQuantity = dto.StockQuantity;
         product.CostPrice = dto.CostPrice;

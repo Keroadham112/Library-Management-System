@@ -1,6 +1,7 @@
 using backend.Data;
 using backend.Application.Interfaces;
 using backend.Infrastructure.Services;
+using backend.Infrastructure.Seed;
 using backend.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -65,6 +66,19 @@ using (var scope = app.Services.CreateScope())
 
     var authService = scope.ServiceProvider.GetRequiredService<IAuthService>();
     await authService.SeedDefaultAdminAsync();
+
+    if (args.Contains("--seed-storefront", StringComparer.OrdinalIgnoreCase))
+    {
+        if (!app.Environment.IsDevelopment())
+        {
+            throw new InvalidOperationException("The storefront seed command is only available in Development.");
+        }
+
+        var seeder = new StorefrontCatalogSeeder(dbContext);
+        var summary = await seeder.SeedAsync();
+        Console.WriteLine($"Storefront seed complete. Categories added: {summary.AddedCategories}; products added: {summary.AddedProducts}; products skipped: {summary.SkippedProducts}.");
+        return;
+    }
 }
 
 if (app.Environment.IsDevelopment())
@@ -74,6 +88,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 if (app.Environment.IsDevelopment())
 {

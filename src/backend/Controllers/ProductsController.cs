@@ -21,6 +21,7 @@ public sealed class ProductsController(IProductService productService) : Control
     /// <param name="cancellationToken">Cancels the request if the client disconnects.</param>
     /// <returns>A paged list of products including the category name.</returns>
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<ProductListResponseDto>> GetAll(
@@ -45,6 +46,7 @@ public sealed class ProductsController(IProductService productService) : Control
     /// <param name="cancellationToken">Cancels the request if the client disconnects.</param>
     /// <returns>The matching product or 404 if it does not exist.</returns>
     [HttpGet("{id:int}")]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProductDto>> GetById(int id, CancellationToken cancellationToken)

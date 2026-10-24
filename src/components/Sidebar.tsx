@@ -19,7 +19,7 @@ const navigationItems: NavigationItem[] = [
   { label: 'Categories', path: '/categories', icon: FolderTree },
   { label: 'Suppliers', path: '/suppliers', icon: UsersRound },
   { label: 'Customers', path: '/customers', icon: Users },
-  { label: 'Customer Store', path: '/customer-store', icon: Store },
+  { label: 'Customer Store', path: '/store', icon: Store },
   { label: 'Purchases', path: '/purchases', icon: ShoppingBasket },
   { label: 'Sales', path: '/sales', icon: HandCoins },
 ]
@@ -67,7 +67,18 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               isActive ? 'sidebar-link active' : 'sidebar-link'
             }
             key={item.path}
-            onClick={onClose}
+            onClick={(event) => {
+              onClose()
+
+              if (item.label === 'Customer Store') {
+                event.preventDefault()
+                window.open(
+                  new URL(item.path, window.location.origin).toString(),
+                  '_blank',
+                  'noopener,noreferrer',
+                )
+              }
+            }}
             to={item.path}
           >
             <item.icon className="sidebar-link-icon" size={18} />

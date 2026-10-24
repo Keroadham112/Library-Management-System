@@ -16,6 +16,7 @@ public sealed class CategoriesController(ICategoryService categoryService) : Con
     /// <param name="cancellationToken">Cancels the request if the client disconnects.</param>
     /// <returns>A list of categories ordered by name.</returns>
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<CategoryDto>>> GetAll(CancellationToken cancellationToken)
     {
@@ -30,6 +31,7 @@ public sealed class CategoriesController(ICategoryService categoryService) : Con
     /// <param name="cancellationToken">Cancels the request if the client disconnects.</param>
     /// <returns>The matching category or 404 if it does not exist.</returns>
     [HttpGet("{id:int}")]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CategoryDto>> GetById(int id, CancellationToken cancellationToken)

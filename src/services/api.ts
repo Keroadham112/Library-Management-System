@@ -3,6 +3,8 @@ import { getAuthToken } from './authSession'
 
 const apiBaseUrl = 'http://localhost:5128/api'
 
+export const apiOrigin = new URL(apiBaseUrl).origin
+
 export const api = axios.create({
   baseURL: apiBaseUrl,
   headers: {

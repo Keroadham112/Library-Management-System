@@ -287,3 +287,6 @@ D:\inventory system\src\backend\bin\Debug\net10.0\Microsoft.IdentityModel.Protoc
 D:\inventory system\src\backend\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\inventory system\src\backend\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
 D:\inventory system\src\backend\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+d:\inventory system\src\backend\obj\Debug\net10.0\backend.sourcelink.json
+d:\inventory system\src\backend\bin\Debug\net10.0\backend.staticwebassets.runtime.json
+d:\inventory system\src\backend\obj\Debug\net10.0\compressed\6nyqvxi6zh-{0}-9vwj4kt58k-9vwj4kt58k.gz

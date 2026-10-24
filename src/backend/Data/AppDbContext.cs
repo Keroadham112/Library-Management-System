@@ -28,6 +28,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<Product>(entity =>
         {
             entity.Property(product => product.Name).HasMaxLength(150).IsRequired();
+            entity.Property(product => product.Description).HasMaxLength(1000);
+            entity.Property(product => product.ImageUrl).HasMaxLength(1000);
             entity.Property(product => product.Barcode).HasMaxLength(32).IsRequired();
             entity.Property(product => product.SKU).HasMaxLength(50).IsRequired();
             entity.Property(product => product.CostPrice).HasPrecision(18, 2);

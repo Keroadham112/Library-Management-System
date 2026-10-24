@@ -10,11 +10,38 @@ import Products from '../pages/Products'
 import Purchases from '../pages/Purchases'
 import Sales from '../pages/Sales'
 import Suppliers from '../pages/Suppliers'
+import StorefrontCart from '../pages/storefront/StorefrontCart'
+import StorefrontHome from '../pages/storefront/StorefrontHome'
+import StorefrontProductDetails from '../pages/storefront/StorefrontProductDetails'
+import StorefrontProducts from '../pages/storefront/StorefrontProducts'
+import StorefrontLayout from '../layouts/StorefrontLayout'
 
 export const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/store',
+    element: <StorefrontLayout />,
+    children: [
+      {
+        index: true,
+        element: <StorefrontHome />,
+      },
+      {
+        path: 'products',
+        element: <StorefrontProducts />,
+      },
+      {
+        path: 'products/:id',
+        element: <StorefrontProductDetails />,
+      },
+      {
+        path: 'cart',
+        element: <StorefrontCart />,
+      },
+    ],
   },
   {
     path: '/',
